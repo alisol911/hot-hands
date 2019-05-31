@@ -3,7 +3,7 @@
   "description": "Hot Hands Game",
   "image": "heroku/python",
   "repository": "https://github.com/alisol911/hothands",
-  "keywords": ["python", "flask", "react" ],
+  "keywords": ["python", "flask", "react", "webpack" ],
   "addons": [ ],
   "env": {
   },

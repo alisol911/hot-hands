@@ -1,0 +1,25 @@
+{
+    "version": "2.2.1",
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "jsx": "react",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "outDir": "dist",
+        "lib": [
+            "es2015",
+            "dom"
+        ]
+    },
+    "files": [
+        "./src/Globals.d.ts",
+        "./src/index.tsx",
+        "./node_modules/@types/jest/index.d.ts"
+    ],
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
+}

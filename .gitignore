@@ -11,7 +11,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-penv/
 build/
 develop-eggs/
 dist/
@@ -91,4 +90,17 @@ ENV/
 # Rope project settings
 .ropeproject
 
-clientdist
+
+.vscode/
+.idea/
+build/
+node_modules/
+typings/
+npm-debug.log
+tmp/
+dist/
+.sw[a-z]
+yarn.lock
+builds/
+yarn-error.log
+coverage

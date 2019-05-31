@@ -1,0 +1,44 @@
+body header {
+    background: #c7dfe0;
+    color: #000;
+    padding: 20px
+}
+
+@media all and (min-width: 10px) and (max-width: 600px) {
+    body header {
+        padding: 0px
+    }
+}
+
+body header nav a {
+    padding: 0 10px
+}
+
+@media all and (min-width: 10px) and (max-width: 600px) {
+    body header nav a {
+        padding: 0 10px
+    }
+}
+
+body .color-test {
+    color: green
+}
+
+body .main {
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+@media all and (min-width: 10px) and (max-width: 600px) {
+    body .main {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+div .page-header {
+    position: fixed;
+    min-width: 100%;
+    z-index: 1000;
+}
