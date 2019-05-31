@@ -47,10 +47,13 @@ $ export FLASK_APP=server
 $ export FLASK_ENV=development
 $ flask run
 
+$ python -m pytest tests
+
 ```
 
 Test
 ```
+$ pip install -e .
 $ pytest
 $ coverage run -m pytest
 $ coverage report

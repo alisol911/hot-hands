@@ -2,6 +2,7 @@
 
 | Date | Time spend | Description |
 | - | - | - |
+| 2013-06-01 | 04:00 | user can click on hand and compete with computer and see the result |
 | 2013-05-31 | 04:00 | restructure backend, added test for service |
 | 2013-05-31 | 02:00 | deploy to heroku, UI boilerplate |
 | 2013-05-30 | 03:30 | Inital test and throw hand backend, deploy to heroku WIP |
