@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link, Router, Switch } from 'react-router-dom';
 import { Route } from 'react-router';
 
-import Hand from './Hand';
+import Hand from './components/Hand';
 
 interface IAppProps extends React.Props<any> {
 
@@ -20,11 +20,6 @@ export class App extends React.Component<IAppProps, any> {
 
         return (
             <div>
-                <nav className='navbar navbar-light'>
-                    <ul className='nav navbar-nav'>
-                        <li><Link to='/'>Homes</Link></li>
-                    </ul>
-                </nav>
                 <Switch>
                     <Route exact path='/' component={Hand}/>
                 </Switch>

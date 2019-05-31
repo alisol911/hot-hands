@@ -27,15 +27,20 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../dist/')
+    dist_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../dist/')
+    static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../static/')
 
     @app.route('/')
     def Index():
-        return send_from_directory(static_file_dir, 'index.html')
+        return send_from_directory(dist_file_dir, 'index.html')
+
+    @app.route('/image/<path:path>')
+    def StaticContent(path):
+        return send_from_directory(static_file_dir + 'image/', path)
 
     @app.route('/<path:path>')
-    def StaticContent(path):
-        return send_from_directory(static_file_dir, path)
+    def OtherContent(path):
+        return send_from_directory(dist_file_dir, path)
 
     # register the database commands
     # from server import db

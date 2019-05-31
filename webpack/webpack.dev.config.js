@@ -43,12 +43,8 @@ module.exports = require('./webpack.shared.config')({
             ignored: "/node_modules/"
         },
         proxy: {
-            '/assets': {
-                target: 'http://localhost:82',
-                secure: false
-            },
             '/api': {
-                target: 'http://localhost:9095',
+                target: 'http://localhost:5000',
                 secure: false
             }
         }

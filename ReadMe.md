@@ -40,6 +40,15 @@ $ heroku local web
 $ curl http://localhost:5000/api/throw
 ```
 
+Debug server
+
+```
+$ export FLASK_APP=server
+$ export FLASK_ENV=development
+$ flask run
+
+```
+
 Test
 ```
 $ pytest

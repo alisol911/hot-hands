@@ -42,3 +42,7 @@ div .page-header {
     min-width: 100%;
     z-index: 1000;
 }
+
+div .hand-main {
+    text-align: center;
+}
