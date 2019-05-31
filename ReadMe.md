@@ -1,4 +1,4 @@
-## Initial
+## Hot Hands
 
 ### Run environment
 - Ubuntu 19.04
@@ -9,41 +9,66 @@
 - NPM
 
 ### Prepare Heroku
-$ sudo snap install heroku --classic
-$ heroku login
-
-Install Javascript dependencies:
 
 ```
-yarn install
+$ sudo snap install heroku --classic
+$ heroku login
+```
+
+Setup Javascript dependencies:
+
+```
+$ yarn install
 ```
 
 Setup python environment and install dependencies:
 
 ```
-virtualenv -ppython3 venv
-
-source venv/bin/activate
-
-pip install -r requirements.txt
+$ sudo apt install python3-venv
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install -e .
+$ pip install '.[test]'
+$ pip install -r requirements.txt
 ```
 
+Run locally
+
+```
+$ npm run build:dist
+$ heroku local web
+$ curl http://localhost:5000/api/throw
+```
+
+Test
+```
+$ pytest
+$ coverage run -m pytest
+$ coverage report
+$ coverage html  # open htmlcov/index.html in a browser
+```
 ### test backend
 ```
-$ cd server
+$ make test
 ```
 
 ### Heroku tips
 create app
+```
 $ heroku create hot-hands --buildpack heroku/python
-
+```
 add build pack
+```
 $ heroku buildpacks:add --index 1 heroku/nodejs --app=hot-hands
+```
 
-add heroku repository
+add heroku to existing git repository
+```
 $ heroku git:remote -a hot-hands
+```
 
 force build without change
+```
 $ git commit --amend -C HEAD
 $ git push heroku -f
-
+```
