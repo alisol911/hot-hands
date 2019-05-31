@@ -1,0 +1,17 @@
+{
+  "name": "hothands",
+  "description": "Hot Hands Game",
+  "image": "heroku/python",
+  "repository": "https://github.com/alisol911/hothands",
+  "keywords": ["python", "flask", "react" ],
+  "addons": [ ],
+  "env": {
+  },
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "python server/test_hand.py"
+      }
+    }
+  }
+}
