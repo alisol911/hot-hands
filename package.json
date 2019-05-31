@@ -13,7 +13,8 @@
         "checkDepsVersions": "npm-check --skip-unused -u",
         "test": "jest --coverage",
         "lint": "npm run lint:ts",
-        "lint:ts": "tslint src/**/*.ts{,x}"
+        "lint:ts": "tslint src/**/*.ts{,x}",
+        "postinstall": "npm run build:dist"
     },
     "author": "Ali Soleimani <alisol911@gmail.com>",
     "license": "MIT",

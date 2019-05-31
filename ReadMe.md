@@ -36,7 +36,14 @@ $ cd server
 ### Heroku tips
 create app
 $ heroku create hot-hands --buildpack heroku/python
+
 add build pack
 $ heroku buildpacks:add --index 1 heroku/nodejs --app=hot-hands
+
 add heroku repository
 $ heroku git:remote -a hot-hands
+
+force build without change
+$ git commit --amend -C HEAD
+$ git push heroku -f
+
