@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface Props {
+    selected: string;
     name: string;
     click: (name) => void;
 }
@@ -15,8 +16,11 @@ export default class HandItem extends React.Component<Props, State> {
     }
 
     render() {
+        let style = {cursor: 'pointer', margin: '10px'};
+        if (this.props.selected !== 'Noting' && this.props.selected !== this.props.name)
+            style['opacity'] = 0.4;
         return (
-            <img style={{cursor: 'pointer'}} src={'image/' + this.props.name + '.svg'}
+            <img style={style} src={'image/' + this.props.name + '.svg'}
                 onClick={() => this.props.click(this.props.name)}/>
         );
     }
