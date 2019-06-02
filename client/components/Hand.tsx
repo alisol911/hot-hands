@@ -78,7 +78,7 @@ export default class Hand extends React.Component<void, State> {
                     <HandItem key='player1' name={this.state.player1Hand}
                         selected={this.state.player1Hand}
                         click={() => {}}/>
-                    <button onClick={this.tryAgain.bind(this)}>Try again</button>
+                    <button onClick={this.tryAgain.bind(this)} type='button' className='btn btn-primary'>Try again</button>
             </div>
         );
         return (

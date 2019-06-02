@@ -41,6 +41,7 @@
         "basscss": "8.1.0",
         "basscss-addons": "1.0.0",
         "basscss-basic": "1.0.0",
+        "bootstrap": "^4.3.1",
         "cross-env": "5.2.0",
         "css-loader": "2.1.1",
         "devtron": "1.4.0",
@@ -56,7 +57,9 @@
         "jest": "24.8.0",
         "jest-cli": "24.8.0",
         "jest-enzyme": "7.0.2",
+        "jquery": "^3.4.1",
         "optimize-css-assets-webpack-plugin": "5.0.1",
+        "popper.js": "^1.15.0",
         "postcss-cssnext": "3.1.0",
         "postcss-import": "12.0.1",
         "postcss-loader": "3.0.0",
@@ -73,7 +76,7 @@
         "typescript-require": "0.2.10",
         "webpack": "4.32.2",
         "webpack-cli": "3.3.2",
-        "webpack-dev-server": "3.5.0",
+        "webpack-dev-server": "3.5.1",
         "webpack-shell-plugin": "0.5.0"
     },
     "resolutions": {

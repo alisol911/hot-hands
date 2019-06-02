@@ -9,12 +9,12 @@ export default class SelectMode extends React.Component<void, void> {
                 <h1 className='color-test'>Hot Hands!</h1>
                 <div>Select play mode</div>
                 <div style={{margin: '40px'}} >
-                    <Link to='/player-vs-computer'>
+                    <Link type='button' className='btn btn-primary' to='/player-vs-computer'>
                         Player VS Computer
                     </Link>
                 </div>
                 <div style={{margin: '40px'}} >
-                    <Link to='/computer-vs-computer'>
+                    <Link type='button' className='btn btn-primary' to='/computer-vs-computer'>
                         Computer VS Computer
                     </Link>
                 </div>
