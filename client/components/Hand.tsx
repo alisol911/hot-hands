@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import HandItem from './HandItem';
 import { getHands, throwHand, judge } from '../api/hand';
@@ -17,13 +18,18 @@ export default class Hand extends React.Component<void, State> {
     constructor(props, context) {
         super(props, context);
         this.state = {list: [], time: 5,
-                player1Hand: 'Nothing', player2Hand: 'Nothing',
-                winner: ''
-            };
+            player1Hand: 'Nothing', player2Hand: 'Nothing',
+            winner: ''
+        };
         let self = this;
         getHands().then((result: any) => {
             self.setState({list: result.result});
         });
+        this.initialize();
+    }
+
+    initialize() {
+        let self = this;
         throwHand().then((result: any) => {
             self.setState({player1Hand: result.result});
         });
@@ -36,6 +42,11 @@ export default class Hand extends React.Component<void, State> {
         }, 1000);
     }
 
+    tryAgain() {
+        this.setState({time: 5, player1Hand: 'Nothing',
+            player2Hand: 'Nothing', winner: ''}, () => this.initialize());
+    }
+    
     doJudge() {
         if (this.state.winner === '') {
             judge({hand1: this.state.player1Hand, hand2: this.state.player2Hand}).then((result: any) => {
@@ -65,10 +76,11 @@ export default class Hand extends React.Component<void, State> {
                 <div>
                     <h2>{this.state.winner}</h2>
                     <HandItem key='player1' name={this.state.player1Hand}
-                        selected=''
+                        selected={this.state.player1Hand}
                         click={() => {}}/>
-                </div>
-            );
+                    <button onClick={this.tryAgain.bind(this)}>Try again</button>
+            </div>
+        );
         return (
             <div className='hand-main'>
                 {player1}
