@@ -46,3 +46,19 @@ div .page-header {
 div .hand-main {
     text-align: center;
 }
+
+.vertical-center-container {
+    display: table;
+    width: 100%;
+}
+
+.vertical-center-cell {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.vertical-center-box {
+    display: inline-block;
+    vertical-align: top;
+}

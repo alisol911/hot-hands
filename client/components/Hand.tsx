@@ -65,28 +65,67 @@ export default class Hand extends React.Component<void, State> {
 
     render() {
         let player1;
-        if (this.state.winner === '')
+        let result;
+        if (this.state.winner === '') {
+            result = (
+                <div>
+                    <h2>Computer</h2>
+                    <svg width='500' height='10'><line x1='0' y1='0' x2='500' y2='0' stroke-width='3' stroke='black'/></svg>
+                    <h2>Player</h2>
+                    <div>Choose your hand</div>
+                </div>
+            );
             player1 = (
                 <div>
-                    <h3>Timer</h3>
-                    <h2>{this.state.time}</h2>
+                    <svg width='210' height='210'>
+                        <circle cx='100' cy='100' r='95'
+                            stroke-width='5' stroke='red' fill='white'/>
+                        <text x='50%' y='40%' text-anchor='middle' fill='red' font-size='3em'>{this.state.time}</text>
+                        <text x='50%' y='60%' text-anchor='middle' fill='red' font-size='3em'>Timer</text>
+                    </svg>
                 </div>);
-        else
-        player1 = (
+        }
+        else {
+            let resultText;
+            if (this.state.winner === 'Player2')
+                resultText = 'YOU WIN!';
+            else if (this.state.winner === 'Player1')
+                resultText = 'YOU LOSE!';
+            else
+                resultText = this.state.winner;
+            result = (
                 <div>
-                    <h2>{this.state.winner}</h2>
-                    <HandItem key='player1' name={this.state.player1Hand}
-                        selected={this.state.player1Hand}
-                        click={() => {}}/>
-                    <button onClick={this.tryAgain.bind(this)} type='button' className='btn btn-primary'>Try again</button>
-            </div>
-        );
+                    <span style={{fontSize: '40pt'}}>{resultText}</span><p/>
+                    <button onClick={this.tryAgain.bind(this)} type='button'
+                        style={{marginLeft: '10px', marginRight: '10px'}} className='btn btn-primary'>Try again</button>
+                    <Link type='button' className='btn btn-primary' to='/'
+                        style={{marginLeft: '10px', marginRight: '10px'}}>
+                        Change Mode
+                    </Link>
+                </div>
+            );
+            player1 = (
+                <HandItem key='player1' name={this.state.player1Hand}
+                    selected={this.state.player1Hand}
+                    click={() => {}}/>
+            );
+        }
         return (
             <div className='hand-main'>
-                {player1}
-                <h2>Computer</h2>
-                <h2>Player</h2>
-                <div>Choose your hand</div>
+                <div className='vertical-center-container' style={{margin: '10px', height: '220px'}}>
+                    <div className='vertical-center-cell'>
+                        <div className='vertical-center-box'>
+                            {player1}
+                        </div>
+                    </div>
+                </div>
+                <div className='vertical-center-container' style={{height: '150px'}}>
+                    <div className='vertical-center-cell'>
+                        <div className='vertical-center-box'>
+                            {result}
+                        </div>
+                    </div>
+                </div>
                 {this.state.list.map(h =>
                     <HandItem key={h} name={h}
                         selected={this.state.player2Hand}

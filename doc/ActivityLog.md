@@ -2,6 +2,7 @@
 
 | Date | Time spend | Description |
 | - | - | - |
+| 2019-06-02 | 02:00 | more fancier ui, integrate bootstrap, user can try again game after finishing |
 | 2019-06-01 | 01:00 | highlight selected hand and show result |
 | 2019-06-01 | 04:00 | user can click on hand and compete with computer and see the result |
 | 2019-05-31 | 04:00 | restructure backend, added test for service |
