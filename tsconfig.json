@@ -8,14 +8,16 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "outDir": "dist",
+        "esModuleInterop": true,                   /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
         "lib": [
+            
             "es2015",
             "dom"
         ]
     },
     "files": [
-        "./src/Globals.d.ts",
-        "./src/index.tsx",
+        "./client/Globals.d.ts",
+        "./client/index.tsx",
         "./node_modules/@types/jest/index.d.ts"
     ],
     "exclude": [

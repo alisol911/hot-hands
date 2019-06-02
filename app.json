@@ -3,14 +3,14 @@
   "description": "Hot Hands Game",
   "image": "heroku/python",
   "repository": "https://github.com/alisol911/hothands",
-  "keywords": ["python", "flask", "react", "webpack" ],
+  "keywords": ["python", "typescript", "flask", "react", "webpack" ],
   "addons": [ ],
   "env": {
   },
   "environments": {
     "test": {
       "scripts": {
-        "test": "python server/test_hand.py"
+        "test": "python -m pytest tests"
       }
     }
   }

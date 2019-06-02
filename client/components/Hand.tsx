@@ -12,7 +12,7 @@ interface State {
     winner: string;
 }
 
-export default class Hand extends React.Component<void, State> {
+export default class Hand extends React.Component<{}, State> {
     private decreaseTime: number;
 
     constructor(props, context) {
@@ -33,7 +33,7 @@ export default class Hand extends React.Component<void, State> {
         throwHand().then((result: any) => {
             self.setState({player1Hand: result.result});
         });
-        this.decreaseTime = setInterval(() => {
+        this.decreaseTime = window.setInterval(() => {
             if (self.state.time > 0)
                 self.setState({time: self.state.time - 1});
             else {
@@ -46,7 +46,7 @@ export default class Hand extends React.Component<void, State> {
         this.setState({time: 5, player1Hand: 'Nothing',
             player2Hand: 'Nothing', winner: ''}, () => this.initialize());
     }
-    
+
     doJudge() {
         if (this.state.winner === '') {
             judge({hand1: this.state.player1Hand, hand2: this.state.player2Hand}).then((result: any) => {
@@ -70,7 +70,7 @@ export default class Hand extends React.Component<void, State> {
             result = (
                 <div>
                     <h2>Computer</h2>
-                    <svg width='500' height='10'><line x1='0' y1='0' x2='500' y2='0' stroke-width='3' stroke='black'/></svg>
+                    <svg width='500' height='10'><line x1='0' y1='0' x2='500' y2='0' strokeWidth='3' stroke='black'/></svg>
                     <h2>Player</h2>
                     <div>Choose your hand</div>
                 </div>
@@ -79,9 +79,9 @@ export default class Hand extends React.Component<void, State> {
                 <div>
                     <svg width='210' height='210'>
                         <circle cx='100' cy='100' r='95'
-                            stroke-width='5' stroke='red' fill='white'/>
-                        <text x='50%' y='40%' text-anchor='middle' fill='red' font-size='3em'>{this.state.time}</text>
-                        <text x='50%' y='60%' text-anchor='middle' fill='red' font-size='3em'>Timer</text>
+                            strokeWidth='5' stroke='red' fill='white'/>
+                        <text x='50%' y='40%' textAnchor='middle' fill='red' fontSize='3em'>{this.state.time}</text>
+                        <text x='50%' y='60%' textAnchor='middle' fill='red' fontSize='3em'>Timer</text>
                     </svg>
                 </div>);
         }
@@ -126,11 +126,13 @@ export default class Hand extends React.Component<void, State> {
                         </div>
                     </div>
                 </div>
-                {this.state.list.map(h =>
-                    <HandItem key={h} name={h}
-                        selected={this.state.player2Hand}
-                        click={this.clickHand.bind(this)}/>
-                )}
+                <div id='hand-list'>
+                    {this.state.list.map(h =>
+                        <HandItem key={h} name={h}
+                            selected={this.state.player2Hand}
+                            click={this.clickHand.bind(this)}/>
+                    )}
+                </div>
             </div>
         );
     }

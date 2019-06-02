@@ -39,7 +39,6 @@ WinTable = [[WinnerType.Draw, WinnerType.Player2, WinnerType.Player2, WinnerType
             [WinnerType.Player1, WinnerType.Player2, WinnerType.Player1, WinnerType.Draw]]
 
 class Hand():
-    pass
     def Throw(self):
         handValue = random.randint(MinHand.value, MaxHand.value)
         return HandType(handValue)

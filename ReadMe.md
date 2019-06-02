@@ -1,28 +1,23 @@
 ## Hot Hands
 
-### Run environment
+### Development environment
 - Ubuntu 19.04
 - Python 3.7.3
+- NodeJs 10.16.0
+- GIT 2.20.1
 - Visual Studio Code 1.34.0
+- Chromium Web Browser 74.0.3729.169
+
+### Deployment environment
 - Heroku
-- Yarn
-- NPM
 
-### Prepare Heroku
-
+### Setup development environment
+- Setup Javascript dependencies
 ```
-$ sudo snap install heroku --classic
-$ heroku login
+$ npm install
 ```
 
-Setup Javascript dependencies:
-
-```
-$ yarn install
-```
-
-Setup python environment and install dependencies:
-
+- Setup python environment and install dependencies
 ```
 $ sudo apt install python3-venv
 $ python3 -m venv venv
@@ -32,26 +27,33 @@ $ pip install '.[test]'
 $ pip install -r requirements.txt
 ```
 
-Run locally
-
+- Run server
 ```
 $ npm run build:dist
 $ heroku local web
-$ curl http://localhost:5000/api/throw
 ```
+open browser http://localhost:5000
 
-Debug server
-
+- Run server in debug mode
 ```
 $ export FLASK_APP=server
 $ export FLASK_ENV=development
 $ flask run
+$ npm start
+```
+open browser http://localhost:9090
 
-$ python -m pytest tests
-
+- Run client tests
+```
+$ npm test
 ```
 
-Test
+- Run server tests in debug mode
+```
+$ python -m pytest tests
+```
+
+- Run server tests
 ```
 $ pip install -e .
 $ pytest
@@ -59,16 +61,20 @@ $ coverage run -m pytest
 $ coverage report
 $ coverage html  # open htmlcov/index.html in a browser
 ```
-### test backend
-```
-$ make test
-```
 
 ### Heroku tips
+
+prepare environment
+```
+$ sudo snap install heroku --classic
+$ heroku login
+```
+
 create app
 ```
 $ heroku create hot-hands --buildpack heroku/python
 ```
+
 add build pack
 ```
 $ heroku buildpacks:add --index 1 heroku/nodejs --app=hot-hands
@@ -77,6 +83,7 @@ $ heroku buildpacks:add --index 1 heroku/nodejs --app=hot-hands
 add heroku to existing git repository
 ```
 $ heroku git:remote -a hot-hands
+$ git push heroku master
 ```
 
 force build without change
