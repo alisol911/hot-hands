@@ -14,6 +14,7 @@ interface IState {
 
 export default class Hand extends React.Component<{}, IState> {
     private timer: React.RefObject<Timer>;
+    private handItems: object;
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -22,6 +23,7 @@ export default class Hand extends React.Component<{}, IState> {
             winner: ''
         };
         this.timer = React.createRef();
+        this.handItems = {};
     }
 
     componentDidMount() {
@@ -45,10 +47,18 @@ export default class Hand extends React.Component<{}, IState> {
             player1Hand: 'Nothing',
             player2Hand: 'Nothing', winner: ''
         }, () => this.initialize());
+        for (let k in this.handItems) {
+            (this.handItems[k] as HandItem).resetSelected();
+        }
+
     }
 
     doJudge() {
         if (this.state.winner === '') {
+            for (let k in this.handItems) {
+                if (k !== this.state.player2Hand)
+                    (this.handItems[k] as HandItem).othersSelected();
+            }
             judge({ hand1: this.state.player1Hand, hand2: this.state.player2Hand }).then((result: any) => {
                 this.setState({ winner: result.result });
             });
@@ -100,9 +110,7 @@ export default class Hand extends React.Component<{}, IState> {
                 </div>
             );
             player1 = (
-                <HandItem key='player1' name={this.state.player1Hand}
-                    selected={this.state.player1Hand}
-                    click={() => { }} />
+                <HandItem key='player1' name={this.state.player1Hand}/>
             );
         }
         return (
@@ -124,9 +132,9 @@ export default class Hand extends React.Component<{}, IState> {
                 <div id='hand-list'>
                     {this.state.list.map(h =>
                         <HandItem key={h} name={h}
-                            selected={this.state.player2Hand}
-                            click={this.clickHand.bind(this)} />
-                    )}
+                            click={this.clickHand.bind(this)}
+                            ref={(instance) => { this.handItems[h] = instance; }} />
+                    , this)}
                 </div>
             </div>
         );
