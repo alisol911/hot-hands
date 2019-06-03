@@ -5,6 +5,9 @@ import HandItem from './HandItem';
 import Timer from './Timer';
 import { getHands, throwHand, judge } from '../api/hand';
 
+interface IProps {
+    testMode?: boolean;
+}
 interface IState {
     list: Array<string>;
     player1Hand: string;
@@ -12,7 +15,7 @@ interface IState {
     winner: string;
 }
 
-export default class Hand extends React.Component<{}, IState> {
+export default class Hand extends React.Component<IProps, IState> {
     private timer: React.RefObject<Timer>;
     private handItems: object;
     constructor(props, context) {
@@ -96,17 +99,24 @@ export default class Hand extends React.Component<{}, IState> {
                 resultText = 'YOU LOSE!';
             else
                 resultText = this.state.winner;
+            let linkToHome = (
+                <Link type='button' className='btn btn-primary' to='/'
+                    style={{ marginLeft: '10px', marginRight: '10px' }}>
+                    Change Mode
+                </Link>
+            );
+            if (this.props.testMode)
+                linkToHome = (
+                    <BrowserRouter>
+                        {linkToHome}
+                    </BrowserRouter>
+                );
             result = (
                 <div>
                     <span id='game-result' style={{ fontSize: '40pt' }}>{resultText}</span><p />
                     <button onClick={this.tryAgain.bind(this)} type='button'
                         style={{ marginLeft: '10px', marginRight: '10px' }} className='btn btn-primary'>Try again</button>
-                    <BrowserRouter>
-                        <Link type='button' className='btn btn-primary' to='/'
-                            style={{ marginLeft: '10px', marginRight: '10px' }}>
-                            Change Mode
-                        </Link>
-                    </BrowserRouter>
+                    {linkToHome}
                 </div>
             );
             player1 = (

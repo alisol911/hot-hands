@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow, render, mount, configure } from 'enzyme';
+import { mount } from 'enzyme';
 import waitUntil from 'async-wait-until';
 import Hand from '../Hand';
 
@@ -28,7 +28,7 @@ describe('Hand Component', () => {
       ]
     );
 
-    const hand = mount(<Hand />);
+    const hand = mount(<Hand testMode={true}/>);
 
     expect(fetchAny.mock.calls.length).toEqual(2);
     expect(fetchAny.mock.calls[0][0]).toEqual('/api/hands');

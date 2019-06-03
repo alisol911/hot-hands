@@ -14,7 +14,7 @@ describe('Timer Component', () => {
     instance.initialize();
     await finished();
     expect(finished).toHaveBeenCalled();
-    expect(new Date().getTime() - date.getTime()).toEqual(initialTime);
+    expect(new Date().getTime() - date.getTime()).toBeGreaterThanOrEqual(initialTime);
     done();
   });
 });
