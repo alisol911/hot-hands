@@ -1,42 +1,28 @@
 import random
-from enum import Enum
-
-class OrderedEnum(Enum):
-    def __ge__(self, other):
-        if self.__class__ is other.__class__:
-            return self.value >= other.value
-        return NotImplemented
-    def __gt__(self, other):
-        if self.__class__ is other.__class__:
-            return self.value > other.value
-        return NotImplemented
-    def __le__(self, other):
-        if self.__class__ is other.__class__:
-            return self.value <= other.value
-        return NotImplemented
-    def __lt__(self, other):
-        if self.__class__ is other.__class__:
-            return self.value < other.value
-        return NotImplemented
+from server.models.OrderedEnum import OrderedEnum
 
 class HandType(OrderedEnum):
     Nothing = 0
     Rock = 1
     Paper = 2
     Scissors = 3
+    Spock = 4
+    Lizard = 5
 
 MinHand = HandType.Rock
-MaxHand = HandType.Scissors
+MaxHand = HandType.Lizard
 
 class WinnerType(OrderedEnum):
     Draw = 0
     Player1 = 1
     Player2 = 2
 
-WinTable = [[WinnerType.Draw, WinnerType.Player2, WinnerType.Player2, WinnerType.Player2],
-            [WinnerType.Player1, WinnerType.Draw, WinnerType.Player2, WinnerType.Player1],
-            [WinnerType.Player1, WinnerType.Player1, WinnerType.Draw, WinnerType.Player2],
-            [WinnerType.Player1, WinnerType.Player2, WinnerType.Player1, WinnerType.Draw]]
+WinTable = [[WinnerType.Draw,    WinnerType.Player2, WinnerType.Player2, WinnerType.Player2, WinnerType.Player2, WinnerType.Player2],
+            [WinnerType.Player1, WinnerType.Draw,    WinnerType.Player2, WinnerType.Player1, WinnerType.Player2, WinnerType.Player1],
+            [WinnerType.Player1, WinnerType.Player1, WinnerType.Draw,    WinnerType.Player2, WinnerType.Player1, WinnerType.Player2],
+            [WinnerType.Player1, WinnerType.Player2, WinnerType.Player1, WinnerType.Draw,    WinnerType.Player2, WinnerType.Player1],
+            [WinnerType.Player1, WinnerType.Player1, WinnerType.Player2, WinnerType.Player1, WinnerType.Draw,    WinnerType.Player2],
+            [WinnerType.Player1, WinnerType.Player2, WinnerType.Player1, WinnerType.Player2, WinnerType.Player1, WinnerType.Draw]]
 
 class Hand():
     def Throw(self):

@@ -4,7 +4,7 @@ from flask import (
     Blueprint, jsonify, request, abort, Response
 )
 
-from server.models import *
+from server.models import (Hand, HandType)
 
 bp = Blueprint('blog', __name__)
 

@@ -1,5 +1,5 @@
 import unittest
-from server.models import *
+from server.models import (Hand, HandType, WinnerType, MinHand, MaxHand)
 
 class HandTests(unittest.TestCase):
 
@@ -26,18 +26,40 @@ class HandTests(unittest.TestCase):
         self.assertTrue(h.Judge(HandType.Nothing, HandType.Rock) == WinnerType.Player2)
         self.assertTrue(h.Judge(HandType.Nothing, HandType.Paper) == WinnerType.Player2)
         self.assertTrue(h.Judge(HandType.Nothing, HandType.Scissors) == WinnerType.Player2)
+        self.assertTrue(h.Judge(HandType.Nothing, HandType.Spock) == WinnerType.Player2)
+        self.assertTrue(h.Judge(HandType.Nothing, HandType.Lizard) == WinnerType.Player2)
 
         self.assertTrue(h.Judge(HandType.Rock, HandType.Nothing) == WinnerType.Player1)
         self.assertTrue(h.Judge(HandType.Rock, HandType.Rock) == WinnerType.Draw)
         self.assertTrue(h.Judge(HandType.Rock, HandType.Paper) == WinnerType.Player2)
         self.assertTrue(h.Judge(HandType.Rock, HandType.Scissors) == WinnerType.Player1)
+        self.assertTrue(h.Judge(HandType.Rock, HandType.Spock) == WinnerType.Player2)
+        self.assertTrue(h.Judge(HandType.Rock, HandType.Lizard) == WinnerType.Player1)
 
         self.assertTrue(h.Judge(HandType.Paper, HandType.Nothing) == WinnerType.Player1)
         self.assertTrue(h.Judge(HandType.Paper, HandType.Rock) == WinnerType.Player1)
         self.assertTrue(h.Judge(HandType.Paper, HandType.Paper) == WinnerType.Draw)
         self.assertTrue(h.Judge(HandType.Paper, HandType.Scissors) == WinnerType.Player2)
+        self.assertTrue(h.Judge(HandType.Paper, HandType.Spock) == WinnerType.Player1)
+        self.assertTrue(h.Judge(HandType.Paper, HandType.Lizard) == WinnerType.Player2)
 
         self.assertTrue(h.Judge(HandType.Scissors, HandType.Nothing) == WinnerType.Player1)
         self.assertTrue(h.Judge(HandType.Scissors, HandType.Rock) == WinnerType.Player2)
         self.assertTrue(h.Judge(HandType.Scissors, HandType.Paper) == WinnerType.Player1)
         self.assertTrue(h.Judge(HandType.Scissors, HandType.Scissors) == WinnerType.Draw)
+        self.assertTrue(h.Judge(HandType.Scissors, HandType.Spock) == WinnerType.Player2)
+        self.assertTrue(h.Judge(HandType.Scissors, HandType.Lizard) == WinnerType.Player1)
+
+        self.assertTrue(h.Judge(HandType.Spock, HandType.Nothing) == WinnerType.Player1)
+        self.assertTrue(h.Judge(HandType.Spock, HandType.Rock) == WinnerType.Player1)
+        self.assertTrue(h.Judge(HandType.Spock, HandType.Paper) == WinnerType.Player2)
+        self.assertTrue(h.Judge(HandType.Spock, HandType.Scissors) == WinnerType.Player1)
+        self.assertTrue(h.Judge(HandType.Spock, HandType.Spock) == WinnerType.Draw)
+        self.assertTrue(h.Judge(HandType.Spock, HandType.Lizard) == WinnerType.Player2)
+
+        self.assertTrue(h.Judge(HandType.Lizard, HandType.Nothing) == WinnerType.Player1)
+        self.assertTrue(h.Judge(HandType.Lizard, HandType.Rock) == WinnerType.Player2)
+        self.assertTrue(h.Judge(HandType.Lizard, HandType.Paper) == WinnerType.Player1)
+        self.assertTrue(h.Judge(HandType.Lizard, HandType.Scissors) == WinnerType.Player2)
+        self.assertTrue(h.Judge(HandType.Lizard, HandType.Spock) == WinnerType.Player1)
+        self.assertTrue(h.Judge(HandType.Lizard, HandType.Lizard) == WinnerType.Draw)
