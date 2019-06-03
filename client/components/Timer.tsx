@@ -18,6 +18,7 @@ export default class Timer extends React.Component<IProps, IState> {
 
     reset() {
         clearInterval(this.decreaseTime);
+        this.setState({ time: this.props.initialTime });
     }
 
     initialize() {
@@ -33,11 +34,13 @@ export default class Timer extends React.Component<IProps, IState> {
     render() {
         return (
             <div>
-                <svg width='210' height='210'>
-                    <circle cx='100' cy='100' r='95'
+                <svg width='120' height='120'>
+                    <circle cx='60' cy='60' r='55'
                         strokeWidth='5' stroke='red' fill='white' />
-                    <text x='50%' y='40%' textAnchor='middle' fill='red' fontSize='3em'>{this.state.time}</text>
-                    <text x='50%' y='60%' textAnchor='middle' fill='red' fontSize='3em'>Timer</text>
+                    <text x='50%' y='40%' textAnchor='middle' fill='red'
+                        fontSize='2em'>{this.state.time}</text>
+                    <text x='50%' y='60%' textAnchor='middle' fill='red'
+                        fontSize='2em'>Timer</text>
                 </svg>
             </div>
         );

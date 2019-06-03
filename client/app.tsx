@@ -3,7 +3,8 @@ import { Link, Router, Switch } from 'react-router-dom';
 import { Route } from 'react-router';
 
 import SelectMode from './components/SelectMode';
-import Hand from './components/Hand';
+import ComputerVsPlayer from './components/ComputerVsPlayer';
+import ComputerVsComputer from './components/ComputerVsComputer';
 
 interface IAppProps extends React.Props<any> {
 
@@ -21,7 +22,8 @@ export class App extends React.Component<IAppProps, any> {
             <div>
                 <Switch>
                     <Route exact path='/' component={SelectMode}/>
-                    <Route exact path='/player-vs-computer' component={Hand}/>
+                    <Route exact path='/computer-vs-player' component={ComputerVsPlayer}/>
+                    <Route exact path='/computer-vs-computer' component={ComputerVsComputer}/>
                 </Switch>
             </div>
         );

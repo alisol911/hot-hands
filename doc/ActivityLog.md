@@ -2,6 +2,7 @@
 
 | Date | Time spend | Description |
 | - | - | - |
+| 2019-06-03 | 04:30 | implement computer vs computer state |
 | 2019-06-03 | 00:30 | improve hand selection ui |
 | 2019-06-03 | 01:30 | make a separate timer component |
 | 2019-06-03 | 01:00 | finalize enzyme integration |

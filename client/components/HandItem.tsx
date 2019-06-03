@@ -40,7 +40,7 @@ export default class HandItem extends React.Component<IProps, IState> {
     }
 
     render() {
-        let style = { margin: '10px' };
+        let style = { height: '150px', width: '150px', margin: '10px' };
         if (this.state.selected === State.NoneSelected)
             style['cursor'] = 'pointer';
         else if (this.state.selected === State.OthersSelected)

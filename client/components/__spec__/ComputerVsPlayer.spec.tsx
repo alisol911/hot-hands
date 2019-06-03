@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import waitUntil from 'async-wait-until';
-import Hand from '../Hand';
+import ComputerVsPlayer from '../ComputerVsPlayer';
 
-describe('Hand Component', () => {
+describe('ComputerVsPlayer Component', () => {
   const fetchAny = fetch as any;
 
   beforeEach(() => {
     fetchAny.resetMocks();
-
   });
 
   it('should create with the default classes', async (done) => {
@@ -28,21 +27,21 @@ describe('Hand Component', () => {
       ]
     );
 
-    const hand = mount(<Hand testMode={true}/>);
+    const g = mount(<ComputerVsPlayer testMode={true}/>);
 
     expect(fetchAny.mock.calls.length).toEqual(2);
     expect(fetchAny.mock.calls[0][0]).toEqual('/api/hands');
     expect(fetchAny.mock.calls[1][0]).toEqual('/api/throw');
-    await waitUntil(() => (hand.state('list') as any).length === handType.result.length);
-    hand.update();
-    const handList = hand.find('#hand-list');
+    await waitUntil(() => (g.state('list') as any).length === handType.result.length);
+    g.update();
+    const handList = g.find('#hand-list');
     expect(handList.children().length).toEqual(handType.result.length);
     handList.children().first().simulate('click');
     expect(fetchAny.mock.calls.length).toEqual(3);
     expect(fetchAny.mock.calls[2][0]).toEqual('/api/judge');
-    await waitUntil(() => hand.state('winner') === 'Player1');
-    hand.update();
-    expect(hand.find('#game-result').text()).toEqual('YOU LOSE!');
+    await waitUntil(() => g.state('winner') === 'Player1');
+    g.update();
+    expect(g.find('#game-result').text()).toEqual('YOU LOSE!');
     done();
   });
 });
