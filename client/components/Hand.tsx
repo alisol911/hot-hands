@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter } from 'react-router-dom';
 
 import HandItem from './HandItem';
 import { getHands, throwHand, judge } from '../api/hand';
@@ -95,13 +95,15 @@ export default class Hand extends React.Component<{}, State> {
                 resultText = this.state.winner;
             result = (
                 <div>
-                    <span style={{fontSize: '40pt'}}>{resultText}</span><p/>
+                    <span id='game-result' style={{fontSize: '40pt'}}>{resultText}</span><p/>
                     <button onClick={this.tryAgain.bind(this)} type='button'
                         style={{marginLeft: '10px', marginRight: '10px'}} className='btn btn-primary'>Try again</button>
-                    <Link type='button' className='btn btn-primary' to='/'
-                        style={{marginLeft: '10px', marginRight: '10px'}}>
-                        Change Mode
-                    </Link>
+                    <BrowserRouter>
+                        <Link type='button' className='btn btn-primary' to='/'
+                            style={{marginLeft: '10px', marginRight: '10px'}}>
+                            Change Mode
+                        </Link>
+                    </BrowserRouter>
                 </div>
             );
             player1 = (

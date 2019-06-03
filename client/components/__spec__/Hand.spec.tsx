@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { shallow, render, configure } from 'enzyme';
-
+import { shallow, render, mount, configure } from 'enzyme';
+import waitUntil from 'async-wait-until';
 import Hand from '../Hand';
 
 describe('Hand Component', () => {
@@ -10,7 +10,7 @@ describe('Hand Component', () => {
     fetchAny.resetMocks();
   });
 
-  it('should create with the default classes', () => {
+  it('should create with the default classes', async (done) => {
     let handType = { result: ['Rock', 'Paper', 'Scissors'] };
     fetchAny.mockResponses(
       [
@@ -20,23 +20,28 @@ describe('Hand Component', () => {
       [
         JSON.stringify({ result: 'Paper' }),
         { status: 200 }
+      ],
+      [
+        JSON.stringify({ result: 'Player1' }),
+        { status: 200 }
       ]
     );
 
-    const hand = shallow(<Hand />);
+    const hand = mount(<Hand />);
 
     expect(fetchAny.mock.calls.length).toEqual(2);
     expect(fetchAny.mock.calls[0][0]).toEqual('/api/hands');
     expect(fetchAny.mock.calls[1][0]).toEqual('/api/throw');
-
-    // jest does not call render automatically
-    hand.setState({ list: handType.result }, () => {
-      hand.update();
-      const handList = hand.children('#hand-list').children();
-      expect(handList.length).toEqual(3);
-      handList.first().simulate('click');
-      expect(fetchAny.mock.calls.length).toEqual(3);
-      expect(fetchAny.mock.calls[2][0]).toEqual('/api/judge');
-    });
+    await waitUntil(() => (hand.state('list') as any).length === handType.result.length);
+    hand.update();
+    const handList = hand.find('#hand-list');
+    expect(handList.children().length).toEqual(handType.result.length);
+    handList.children().first().simulate('click');
+    expect(fetchAny.mock.calls.length).toEqual(3);
+    expect(fetchAny.mock.calls[2][0]).toEqual('/api/judge');
+    await waitUntil(() => hand.state('winner') === 'Player1');
+    hand.update();
+    expect(hand.find('#game-result').text()).toEqual('YOU LOSE!');
+    done();
   });
 });

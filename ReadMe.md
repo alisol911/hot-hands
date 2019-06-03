@@ -36,6 +36,7 @@ open browser http://localhost:5000
 
 - Run server in debug mode
 ```
+$ source venv/bin/activate
 $ export FLASK_APP=server
 $ export FLASK_ENV=development
 $ flask run
