@@ -37,9 +37,9 @@ export default class ComputerVsComputer extends GameAbstractBase {
 
     getWinnerText() {
         if (this.state.winner === 'Player2')
-            return 'Computer2 WIN!';
+            return 'Computer 2 WIN!';
         else if (this.state.winner === 'Player1')
-            return 'Computer1 WIN!';
+            return 'Computer 1 WIN!';
         else
             return this.state.winner;
     }

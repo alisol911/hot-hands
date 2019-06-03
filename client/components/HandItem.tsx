@@ -44,7 +44,7 @@ export default class HandItem extends React.Component<IProps, IState> {
         if (this.state.selected === State.NoneSelected)
             style['cursor'] = 'pointer';
         else if (this.state.selected === State.OthersSelected)
-            style['opacity'] = 0.4;
+            style['opacity'] = 0.2;
 
         return (
             <img style={style} src={'image/' + this.props.name + '.svg'}

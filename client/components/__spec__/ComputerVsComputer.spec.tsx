@@ -35,7 +35,7 @@ describe('ComputerVsComputer Component', () => {
     expect(fetchAny.mock.calls[2][0]).toEqual('/api/judge');
     await waitUntil(() => g.state('winner') === 'Player2');
     g.update();
-    expect(g.find('#game-result').text()).toEqual('Computer2 WIN!');
+    expect(g.find('#game-result').text()).toEqual('Computer 2 WIN!');
     done();
   });
 });

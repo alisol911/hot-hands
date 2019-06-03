@@ -10,7 +10,7 @@ export default class SelectMode extends React.Component<{}, {}> {
                 <div>Select play mode</div>
                 <div style={{ margin: '40px' }} >
                     <Link type='button' className='btn btn-primary' to='/computer-vs-player'>
-                        Player VS Computer
+                        Computer VS Player
                     </Link>
                 </div>
                 <div style={{ margin: '40px' }} >

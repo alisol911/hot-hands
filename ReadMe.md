@@ -1,4 +1,5 @@
 ## Hot Hands
+A simple web-based [Paper-Rock-Scissors](https://en.wikipedia.org/wiki/Rock%E2%80%93paper%E2%80%93scissors) game 
 
 ### Development environment
 - Ubuntu 19.04
@@ -24,7 +25,6 @@ $ python3 -m venv venv
 $ source venv/bin/activate
 $ pip install -e .
 $ pip install '.[test]'
-$ pip install -r requirements.txt
 ```
 
 - Run server
