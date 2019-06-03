@@ -8,6 +8,7 @@ describe('Hand Component', () => {
 
   beforeEach(() => {
     fetchAny.resetMocks();
+
   });
 
   it('should create with the default classes', async (done) => {

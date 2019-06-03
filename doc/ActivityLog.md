@@ -2,6 +2,7 @@
 
 | Date | Time spend | Description |
 | - | - | - |
+| 2019-06-03 | 01:30 | make a separate timer component |
 | 2019-06-03 | 01:00 | finalize enzyme integration |
 | 2019-06-02 | 04:00 | integrate enzyme |
 | 2019-06-02 | 02:00 | more fancier ui, integrate bootstrap, user can try again game after finishing |
