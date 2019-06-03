@@ -31,6 +31,8 @@ def create_app(test_config=None):
     static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../static/')
 
     @app.route('/')
+    @app.route('/computer-vs-player')
+    @app.route('/computer-vs-computer')
     def Index():
         return send_from_directory(dist_file_dir, 'index.html')
 
