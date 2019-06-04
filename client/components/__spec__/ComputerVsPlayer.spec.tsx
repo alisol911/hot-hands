@@ -30,15 +30,15 @@ describe('ComputerVsPlayer Component', () => {
     const g = mount(<ComputerVsPlayer testMode={true}/>);
 
     expect(fetchAny.mock.calls.length).toEqual(2);
-    expect(fetchAny.mock.calls[0][0]).toEqual('/api/hands');
-    expect(fetchAny.mock.calls[1][0]).toEqual('/api/throw');
+    expect(fetchAny.mock.calls[0][0]).toEqual('/api/hand/types');
+    expect(fetchAny.mock.calls[1][0]).toEqual('/api/hand/throw');
     await waitUntil(() => (g.state('list') as any).length === handType.result.length);
     g.update();
     const handList = g.find('#hand-list');
     expect(handList.children().length).toEqual(handType.result.length);
     handList.children().first().simulate('click');
     expect(fetchAny.mock.calls.length).toEqual(3);
-    expect(fetchAny.mock.calls[2][0]).toEqual('/api/judge');
+    expect(fetchAny.mock.calls[2][0]).toEqual('/api/hand/judge');
     await waitUntil(() => g.state('winner') === 'Player1');
     g.update();
     expect(g.find('#game-result').text()).toEqual('YOU LOSE!');

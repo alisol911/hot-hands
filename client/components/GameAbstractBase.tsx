@@ -52,8 +52,8 @@ export default abstract class GameAbstractBase extends React.Component<IProps, I
         if (this.state.winner === '') {
             judge({ hand1: this.state.player1Hand, hand2: this.state.player2Hand }).then((result: any) => {
                 this.setState({ winner: result.result, showResult: true });
+                this.timer.current.reset();
             });
-            this.timer.current.reset();
         }
     }
 
